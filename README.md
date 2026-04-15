@@ -37,23 +37,27 @@ Cenário simulado: restaurante real que precisa **captar pedidos pelo celular**,
 ## Tecnologias utilizadas
 
 - **HTML5** — estrutura semântica (`header`, `main`, `section`, `nav`, `footer`), headings hierárquicos e SEO básico (title, meta description).
-- **CSS3** — layout responsivo **mobile-first**, variáveis CSS, tipografia web (Google Fonts), componentes reutilizáveis e estados de hover/foco.
-- **JavaScript (ES5+)** — validação de formulário, montagem dinâmica de mensagens, contador de oferta, menu mobile, animação on-scroll e botão flutuante.
+- **CSS3** — layout responsivo **mobile-first**, variáveis CSS, tipografia do sistema (sem dependência externa de fontes), componentes reutilizáveis e estados de hover/foco.
+- **JavaScript (ES5+)** — validação e sanitização, rate limit client-side, LGPD/cookies com registro criptografado (Web Crypto AES-GCM quando disponível), contador de oferta, menu mobile, animação on-scroll e botão flutuante.
 - **WhatsApp** — abertura de conversa com **mensagem pré-formatada** através da API pública de links: [`https://wa.me`](https://wa.me) (sem backend obrigatório).
 
 ---
 
 ## Funcionalidades
 
-- **Hero de impacto** — imagem de fundo otimizada (URL), overlay para legibilidade e CTA principal.
+- **Hero de impacto** — fundo em CSS (compatível com CSP), overlay e CTA principal.
 - **Seção de diferenciais** — benefícios com ícones SVG e cards responsivos.
 - **Cardápio interativo** — grid de produtos com nome, descrição, preço e **“Pedir via WhatsApp”** por item (mensagem contextual).
+- **Delivery (iFood / 99Food)** — cards com logo, descrição, botão **Pedir**, QR Code (URL configurável em `js/config.js`).
 - **Prova social** — depoimentos com avaliação em estrelas e layout confiável.
 - **Oferta com urgência** — destaque visual e **contador regressivo** (JavaScript).
-- **Formulário de pedido/contato** — nome, telefone e mensagem com **validação completa** (campos vazios, telefone BR 10/11 dígitos).
-- **Feedback visual** — classes de erro nos campos e mensagem de sucesso antes do disparo para o WhatsApp.
-- **Integração WhatsApp** — função que **monta a mensagem dinamicamente** e abre o link com `encodeURIComponent`.
-- **Botão flutuante** — acesso rápido ao WhatsApp em qualquer scroll.
+- **Formulário de pedido** — nome (letras, mín. 3), telefone BR, endereço (mín. 10 caracteres), mensagem (5–500), checkboxes LGPD obrigatórios, **sanitização anti-XSS** e **rate limit** (3 envios/minuto por IP obtido via serviço público + `localStorage`).
+- **Banner de cookies / LGPD** — Aceitar todos, Personalizar (Necessários / Analíticos / Marketing), Recusar; consentimento gravado com **timestamp, IP** e payload **criptografado** no navegador.
+- **Páginas legais** — `politica-privacidade.html` e `termos-de-uso.html`.
+- **Feedback visual** — erros por campo, erro geral de rate limit e sucesso antes do WhatsApp.
+- **Integração WhatsApp** — mensagem montada dinamicamente; links `wa.me`.
+- **Botão flutuante** — WhatsApp acima do banner de cookies.
+- **Meta de segurança** — CSP (com `img-src` / `connect-src` necessários ao QR e IP), `X-Frame-Options: DENY`, `Referrer-Policy`.
 - **Responsividade mobile-first** — header adaptável, menu toggle e grids fluidos.
 - **Animações leves** — fade-in ao rolar (Intersection Observer), respeitando `prefers-reduced-motion`.
 - **SEO básico** — título e meta description alinhados à proposta de valor.
@@ -84,7 +88,9 @@ Em **2026**, landing pages eficazes unem **performance**, **clareza** e **mensur
 
 1. Clone ou baixe o repositório.
 2. Abra o arquivo **`index.html`** no navegador (duplo clique ou “Open with Live Server”, se usar VS Code).
-3. **WhatsApp:** no arquivo **`script.js`**, ajuste a constante **`WHATSAPP_NUMBER`** para o número real no formato internacional **somente dígitos** (ex.: `5511999999999`).
+3. **Configuração:** no arquivo **`js/config.js`**, ajuste **`whatsappNumber`**, **`ifoodLink`** e **`food99Link`** para os dados reais (WhatsApp: somente dígitos com DDI/DDD).
+
+Para **Web Crypto** (criptografia do consentimento) e **fetch do IP**, use **HTTPS** ou `localhost` (navegadores bloqueiam `crypto.subtle` em origem insegura).
 
 Não é necessário Node.js, build ou servidor — o projeto roda como site estático.
 
@@ -106,9 +112,18 @@ Este repositório simula um **entregável comercial** típico de agência ou fre
 
 ```
 Restaurante/
-├── index.html    # Página e conteúdo semântico
-├── style.css     # Estilos mobile-first
-├── script.js     # Validação, WhatsApp, countdown, UX
+├── index.html
+├── 404.html
+├── politica-privacidade.html
+├── termos-de-uso.html
+├── css/
+│   ├── style.css   # Estilos mobile-first
+│   └── lgpd.css    # Banner e modal de cookies
+├── js/
+│   ├── config.js   # WhatsApp, links iFood/99Food, countdown
+│   ├── security.js # Validação, sanitização, rate limit, IP
+│   ├── lgpd.js     # Consentimento e criptografia (AES-GCM)
+│   └── main.js     # UI, WhatsApp, formulário, delivery
 └── README.md
 ```
 

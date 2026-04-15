@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="public, max-age=3600">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com https://api.qrserver.com; connect-src 'self' https://api.ipify.org https://www.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net; font-src 'self' data:; media-src 'self' https://storage.googleapis.com;">
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <meta name="description" content="Hambúrgueres artesanais em Salvador. Peça pelo WhatsApp, delivery iFood e 99Food. Ingredientes frescos e entrega rápida.">
+  <meta name="geo.region" content="BR-BA">
+  <meta name="geo.placename" content="Salvador">
+  <meta name="geo.position" content="-12.9777;-38.5016">
+  <meta name="ICBM" content="-12.9777, -38.5016">
+  <meta name="theme-color" content="#e50914">
+  <title>Chama Burger | Hambúrguer Artesanal — Peça Agora</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+  <link rel="dns-prefetch" href="https://api.qrserver.com">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/lgpd.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Chama Burger",
+    "image": "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1200&q=80",
+    "priceRange": "$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Av. Exemplo, 1000, Sala 2",
+      "addressLocality": "Salvador",
+      "addressRegion": "BA",
+      "postalCode": "40000-000",
+      "addressCountry": "BR"
+    },
+    "telephone": "+557130000000",
+    "servesCuisine": "Hambúrguer",
+    "openingHoursSpecification": [
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "11:00", "closes": "23:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "11:00", "closes": "00:00"},
+      {"@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "12:00", "closes": "22:00"}
+    ],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "2400"
+    }
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#conteudo-principal">Ir para o conteúdo</a>
+
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="logo" aria-label="Chama Burger — início">Chama<span>Burger</span></a>
+      <nav class="nav-main" aria-label="Principal">
+        <ul>
+          <li><a href="#diferenciais">Diferenciais</a></li>
+          <li><a href="#cardapio">Cardápio</a></li>
+          <li><a href="#delivery">Delivery</a></li>
+          <li><a href="#depoimentos">Clientes</a></li>
+          <li><a href="#pedido" class="nav-cta">Pedir</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-mobile" aria-label="Abrir menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div id="nav-mobile" class="nav-mobile" hidden>
+      <ul>
+        <li><a href="#cardapio">Cardápio</a></li>
+        <li><a href="#delivery">Delivery</a></li>
+        <li><a href="#pedido">Fazer pedido</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main id="conteudo-principal">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true">
+        <picture>
+          <source type="image/avif" srcset="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&q=80&fm=avif">
+          <source type="image/webp" srcset="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&q=80&fm=webp">
+          <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1400&q=80&fm=jpg" width="1200" height="900" fetchpriority="high" decoding="async" alt="Hambúrguer artesanal com queijo derretido e pão brioche">
+        </picture>
+      </div>
+      <div class="hero-overlay"></div>
+      <div class="container hero-content">
+        <p class="hero-badge" data-animate>Sabor que você sente na primeira mordida</p>
+        <h1 id="hero-title" class="hero-title" data-animate>Hambúrguer artesanal que vira vício — entrega em minutos</h1>
+        <p class="hero-sub" data-animate>Carne smash suculenta, pão macio e molhos caseiros. Peça agora: promoção do combo acaba em breve.</p>
+        <div class="hero-actions" data-animate>
+          <a href="#pedido" class="btn btn-primary btn-lg cta-pedir-agora">Pedir Agora</a>
+          <a href="#cardapio" class="btn btn-outline btn-lg">Ver cardápio</a>
+        </div>
+        <p class="hero-proof" data-animate><strong>+2.400 pedidos</strong> só este mês · <span class="stars" aria-hidden="true">★★★★★</span> 4,9 no app</p>
+      </div>
+    </section>
+
+    <div class="status-bar">
+      <div class="container">
+        <div id="status-restaurante" class="status-badge status-badge--open" role="status" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <section id="diferenciais" class="section diferenciais" aria-labelledby="diferenciais-title">
+      <div class="container">
+        <h2 id="diferenciais-title" class="section-title h2" data-animate>Por que a galera escolhe a Chama</h2>
+        <p class="section-lead" data-animate>Ingredientes de verdade, preparo no ponto e entrega que não te deixa na mão.</p>
+        <ul class="benefits-grid">
+          <li class="benefit-card" data-animate>
+            <h3 class="h3">Ingredientes frescos</h3>
+            <p>Vegetais no dia, blend premium e queijos selecionados.</p>
+          </li>
+          <li class="benefit-card" data-animate>
+            <h3 class="h3">Entrega rápida</h3>
+            <p>Rota otimizada e embalagem térmica.</p>
+          </li>
+          <li class="benefit-card" data-animate>
+            <h3 class="h3">Preparo artesanal</h3>
+            <p>Cada pedido na chapa no momento.</p>
+          </li>
+          <li class="benefit-card" data-animate>
+            <h3 class="h3">Qualidade premium</h3>
+            <p>Receita testada milhares de vezes.</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="cardapio" class="section cardapio" aria-labelledby="cardapio-title">
+      <div class="container">
+        <h2 id="cardapio-title" class="section-title" data-animate>Cardápio</h2>
+        <p class="section-lead" data-animate>Preços transparentes. Fotos ilustrativas — preparo artesanal.</p>
+        <div class="menu-grid">
+          <article class="menu-card menu-card--hit" data-animate>
+            <span class="menu-badge">Mais vendido</span>
+            <figure class="menu-card__media">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80&fm=webp">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" decoding="async" alt="Smash Duplo Clássico — dois smashes, bacon crocante, queijo cheddar duplo e pão brioche">
+              </picture>
+            </figure>
+            <h3 class="h3">Smash Duplo Clássico</h3>
+            <p>Dois smashes, queijo cheddar duplo, cebola caramelizada e maionese da casa no pão brioche.</p>
+            <p class="menu-price">R$ 36,90</p>
+            <a href="#" class="btn btn-whatsapp menu-wa" role="button" data-product="Smash Duplo Clássico" data-price="R$ 36,90">Pedir via WhatsApp</a>
+          </article>
+          <article class="menu-card menu-card--hit" data-animate>
+            <span class="menu-badge">Mais vendido</span>
+            <figure class="menu-card__media">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1553979459-d2229ba7433f?w=800&q=80&fm=webp">
+                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433f?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Bacon Crunch Premium — blend 180g, bacon crocante, queijo suíço e barbecue">
+              </picture>
+            </figure>
+            <h3 class="h3">Bacon Crunch Premium</h3>
+            <p>Blend 180g, bacon crocante, queijo suíço, barbecue defumado e pickles.</p>
+            <p class="menu-price">R$ 42,90</p>
+            <a href="#" class="btn btn-whatsapp menu-wa" role="button" data-product="Bacon Crunch Premium" data-price="R$ 42,90">Pedir via WhatsApp</a>
+          </article>
+          <article class="menu-card" data-animate>
+            <figure class="menu-card__media">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1619881590738-11107aefe924?w=800&q=80&fm=webp">
+                <img src="https://images.unsplash.com/photo-1619881590738-11107aefe924?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Chicken Spicy — filé de frango empanado crocante com maionese picante">
+              </picture>
+            </figure>
+            <h3 class="h3">Chicken Spicy</h3>
+            <p>Filé empanado crocante, maionese picante, alface e pão com gergelim.</p>
+            <p class="menu-price">R$ 32,90</p>
+            <a href="#" class="btn btn-whatsapp menu-wa" role="button" data-product="Chicken Spicy" data-price="R$ 32,90">Pedir via WhatsApp</a>
+          </article>
+          <article class="menu-card" data-animate>
+            <figure class="menu-card__media">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1525059696034-4967a7290028?w=800&q=80&fm=webp">
+                <img src="https://images.unsplash.com/photo-1525059696034-4967a7290028?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Veggie Fire — hambúrguer vegetal com grão-de-bico, rúcula e pesto">
+              </picture>
+            </figure>
+            <h3 class="h3">Veggie Fire</h3>
+            <p>Hambúrguer de grão-de-bico, queijo vegetal, rúcula e pesto de manjericão.</p>
+            <p class="menu-price">R$ 34,90</p>
+            <a href="#" class="btn btn-whatsapp menu-wa" role="button" data-product="Veggie Fire" data-price="R$ 34,90">Pedir via WhatsApp</a>
+          </article>
+          <article class="menu-card" id="menu-chama-triplo" data-animate>
+            <figure class="menu-card__media">
+              <picture>
+                <source type="image/avif" srcset="https://images.unsplash.com/photo-1550547660-d9440df05f1d?w=800&q=80&fm=avif">
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1550547660-d9440df05f1d?w=800&q=80&fm=webp">
+                <img src="https://images.unsplash.com/photo-1550547660-d9440df05f1d?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Chama Triplo — três carnes grelhadas, queijo derretido e jalapeño">
+              </picture>
+            </figure>
+            <h3 class="h3">Chama Triplo</h3>
+            <p>Três carnes, três queijos, jalapeño e molho especial.</p>
+            <p class="menu-price">R$ 48,90</p>
+            <a href="#" class="btn btn-whatsapp menu-wa" role="button" data-product="Chama Triplo" data-price="R$ 48,90">Pedir via WhatsApp</a>
+          </article>
+          <article class="menu-card" data-animate>
+            <figure class="menu-card__media">
+              <picture>
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80&fm=webp">
+                <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Combo Kids — mini hambúrguer com batata e suco">
+              </picture>
+            </figure>
+            <h3 class="h3">Combo Kids</h3>
+            <p>Mini smash, batata rústica e suco natural.</p>
+            <p class="menu-price">R$ 28,90</p>
+            <a href="#" class="btn btn-whatsapp menu-wa" role="button" data-product="Combo Kids" data-price="R$ 28,90">Pedir via WhatsApp</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <div class="cta-stripe">
+      <div class="container">
+        <a href="#pedido" class="btn btn-primary btn-lg cta-pedir-agora">Pedir Agora</a>
+      </div>
+    </div>
+
+    <section id="delivery" class="section delivery" aria-labelledby="delivery-title">
+      <div class="container">
+        <h2 id="delivery-title" class="section-title" data-animate>Delivery parceiro</h2>
+        <p class="section-lead" data-animate>Peça pelo app oficial — escaneie o QR ou toque em Pedir Agora.</p>
+        <div class="delivery-grid">
+          <article class="delivery-card-v2" data-animate>
+            <div class="delivery-card-v2__logo" aria-label="Logo iFood">
+              <svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" role="img"><title>iFood</title><rect width="200" height="48" rx="8" fill="#EA1D2C"/><text x="100" y="33" text-anchor="middle" fill="#fff" font-family="system-ui,Arial,sans-serif" font-size="22" font-weight="800">iFood</text></svg>
+            </div>
+            <h3 class="h3">iFood</h3>
+            <p>Cashback, cupons e rastreio de entrega.</p>
+            <div class="delivery-qr"><img id="qr-ifood" src="" width="112" height="112" loading="lazy" alt="QR Code iFood"></div>
+            <a id="delivery-ifood" class="btn btn-primary btn-block" href="#" target="_blank" rel="noopener noreferrer">Pedir Agora</a>
+          </article>
+          <article class="delivery-card-v2" data-animate>
+            <div class="delivery-card-v2__logo" aria-label="Logo 99Food">
+              <svg viewBox="0 0 200 48" xmlns="http://www.w3.org/2000/svg" role="img"><title>99Food</title><rect width="200" height="48" rx="8" fill="#FF6B00"/><text x="100" y="34" text-anchor="middle" fill="#fff" font-family="system-ui,Arial,sans-serif" font-size="26" font-weight="800">99</text></svg>
+            </div>
+            <h3 class="h3">99Food</h3>
+            <p>Ofertas locais e entrega rápida.</p>
+            <div class="delivery-qr"><img id="qr-99" src="" width="112" height="112" loading="lazy" alt="QR Code 99Food"></div>
+            <a id="delivery-99" class="btn btn-primary btn-block" href="#" target="_blank" rel="noopener noreferrer">Pedir Agora</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="depoimentos" class="section depoimentos" aria-labelledby="depoimentos-title">
+      <div class="container">
+        <h2 id="depoimentos-title" class="section-title" data-animate>Avaliações verificadas</h2>
+        <p class="section-lead" data-animate>Clientes reais — comentários moderados.</p>
+        <div class="reviews-carousel" role="region" aria-roledescription="carrossel" aria-label="Depoimentos">
+          <div class="reviews-track">
+            <figure class="review-card" data-animate>
+              <div class="review-card__head">
+                <img class="review-card__avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=96&q=80&fm=avif" width="48" height="48" loading="lazy" alt="">
+                <div class="review-card__head-text">
+                  <strong>Marina Alves</strong>
+                  <span class="review-badge">Verificado</span>
+                </div>
+              </div>
+              <p>“Melhor smash da região. Chegou quentinho em 25 minutos.”</p>
+              <p class="review-meta" aria-label="5 estrelas">★★★★★ · 12/03/2026</p>
+            </figure>
+            <figure class="review-card" data-animate>
+              <div class="review-card__head">
+                <img class="review-card__avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=96&q=80&fm=avif" width="48" height="48" loading="lazy" alt="">
+                <div class="review-card__head-text">
+                  <strong>Ricardo Menezes</strong>
+                  <span class="review-badge">Verificado</span>
+                </div>
+              </div>
+              <p>“Bacon crocante de verdade. Família pede toda sexta.”</p>
+              <p class="review-meta">★★★★★ · 08/03/2026</p>
+            </figure>
+            <figure class="review-card" data-animate>
+              <div class="review-card__head">
+                <img class="review-card__avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=96&q=80&fm=avif" width="48" height="48" loading="lazy" alt="">
+                <div class="review-card__head-text">
+                  <strong>Fernanda Costa</strong>
+                  <span class="review-badge">Verificado</span>
+                </div>
+              </div>
+              <p>“Pedido rápido no Zap e sempre certinho.”</p>
+              <p class="review-meta">★★★★★ · 01/03/2026</p>
+            </figure>
+            <figure class="review-card" data-animate>
+              <div class="review-card__head">
+                <img class="review-card__avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=96&q=80&fm=avif" width="48" height="48" loading="lazy" alt="">
+                <div class="review-card__head-text">
+                  <strong>Paulo Santos</strong>
+                  <span class="review-badge">Verificado</span>
+                </div>
+              </div>
+              <p>“Combo Chama vale cada centavo. Entrega no prazo.”</p>
+              <p class="review-meta">★★★★★ · 28/02/2026</p>
+            </figure>
+            <figure class="review-card" data-animate>
+              <div class="review-card__head">
+                <img class="review-card__avatar" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=96&q=80&fm=avif" width="48" height="48" loading="lazy" alt="">
+                <div class="review-card__head-text">
+                  <strong>Juliana Rocha</strong>
+                  <span class="review-badge">Verificado</span>
+                </div>
+              </div>
+              <p>“Veggie Fire surpreendeu. Molho pesto impecável.”</p>
+              <p class="review-meta">★★★★☆ · 20/02/2026</p>
+            </figure>
+            <figure class="review-card" data-animate>
+              <div class="review-card__head">
+                <img class="review-card__avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=96&q=80&fm=avif" width="48" height="48" loading="lazy" alt="">
+                <div class="review-card__head-text">
+                  <strong>Bruno Lima</strong>
+                  <span class="review-badge">Verificado</span>
+                </div>
+              </div>
+              <p>“Melhor atendimento em delivery da região.”</p>
+              <p class="review-meta">★★★★★ · 15/02/2026</p>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="fidelidade" class="section" aria-labelledby="fidelidade-title">
+      <div class="container">
+        <h2 id="fidelidade-title" class="section-title" data-animate>Fidelidade Chama</h2>
+        <p class="section-lead" data-animate>A cada 5 pedidos qualificados, o 6º burger sai grátis (conforme regras no balcão).</p>
+        <div class="fidelidade-wrap" data-animate>
+          <div id="fidelidade-selos" class="fidelidade-selos" aria-live="polite"></div>
+          <p id="fidelidade-msg">Carregando selos…</p>
+          <button type="button" class="btn btn-outline" id="fidelidade-demo-add">Simular +1 pedido (demo)</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="oferta" class="section oferta" aria-labelledby="oferta-title">
+      <div class="container">
+        <div class="oferta-box" data-animate>
+          <div>
+            <span class="hero-badge">Promoção por tempo limitado</span>
+            <h2 id="oferta-title" class="h2">Combo Chama: 2 burgers + 2 batatas + 2 refrigerantes</h2>
+            <p class="section-lead" style="max-width:none">Economize e mate a fome em dupla.</p>
+            <p><span style="text-decoration:line-through;color:#a3a3a3">De R$ 98,00</span> <strong style="color:var(--color-accent);font-size:1.5rem">Por R$ 79,90</strong></p>
+            <a href="#pedido" class="btn btn-primary btn-lg cta-pedir-agora">Pedir Agora</a>
+          </div>
+          <div class="oferta-timer-wrap" aria-live="polite">
+            <p class="oferta-timer-label">Oferta encerra em:</p>
+            <div class="countdown" id="countdown" role="timer">
+              <span><span id="cd-h">00</span><small>h</small></span>
+              <span><span id="cd-m">00</span><small>min</small></span>
+              <span><span id="cd-s">00</span><small>s</small></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="video-promo" class="section" aria-labelledby="video-title">
+      <div class="container">
+        <h2 id="video-title" class="section-title" data-animate>Por trás dos bastidores</h2>
+        <div class="video-wrap" data-animate>
+          <video controls width="720" playsinline poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1280&q=80">
+            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+            <track kind="captions" srclang="pt-BR" label="Português (Brasil)" src="assets/captions.vtt" default>
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <section id="checkout" class="section checkout-section" aria-labelledby="checkout-title">
+      <div class="container">
+        <h2 id="checkout-title" class="section-title" data-animate>Pagamento (demonstração)</h2>
+        <p class="section-lead" data-animate>Simulação de checkout — em produção, integre gateway homologado.</p>
+        <div class="checkout-grid">
+          <div class="checkout-card" data-animate>
+            <h3 class="h3">PIX</h3>
+            <div class="pix-placeholder" aria-hidden="true">QR</div>
+            <label for="pix-key">Chave PIX</label>
+            <input type="text" id="pix-key" class="form-group" placeholder="E-mail ou telefone" autocomplete="off">
+          </div>
+          <div class="checkout-card" data-animate>
+            <h3 class="h3">Cartão</h3>
+            <label for="checkout-card-num">Número</label>
+            <input type="text" id="checkout-card-num" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" autocomplete="cc-number">
+            <label for="checkout-card-name">Nome</label>
+            <input type="text" id="checkout-card-name" autocomplete="cc-name">
+          </div>
+          <div class="checkout-card" data-animate>
+            <h3 class="h3">Boleto</h3>
+            <label for="checkout-boleto-cpf">CPF</label>
+            <input type="text" id="checkout-boleto-cpf" inputmode="numeric" maxlength="14" placeholder="000.000.000-00">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pedido" class="section pedido pedido-section" aria-labelledby="pedido-title">
+      <div class="container">
+        <h2 id="pedido-title" class="section-title" data-animate>Monte seu pedido</h2>
+        <p class="section-lead" data-animate>Enviamos direto ao WhatsApp.</p>
+        <form class="pedido-form compact-form" id="form-pedido" novalidate data-animate>
+          <p class="form-geral-error" id="err-geral" role="alert" hidden></p>
+          <div class="form-group">
+            <label for="nome">Nome completo</label>
+            <input type="text" id="nome" name="nome" autocomplete="name" required maxlength="120" minlength="3" placeholder="Ex: Maria Silva">
+            <span class="field-error" id="err-nome" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="telefone">WhatsApp (com DDD)</label>
+            <input type="tel" id="telefone" name="telefone" autocomplete="tel" required maxlength="16" inputmode="numeric" placeholder="(71) 99999-9999">
+            <span class="field-error" id="err-telefone" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="endereco">Endereço de entrega</label>
+            <input type="text" id="endereco" name="endereco" autocomplete="street-address" required maxlength="300" minlength="10" placeholder="Rua, número, bairro, cidade">
+            <span class="field-error" id="err-endereco" role="alert"></span>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Pedido ou mensagem</label>
+            <textarea id="mensagem" name="mensagem" rows="3" required maxlength="500" minlength="5" placeholder="Itens e observações"></textarea>
+            <span class="field-error" id="err-mensagem" role="alert"></span>
+          </div>
+          <div id="lgpd" class="consent-inline consent-block--compact">
+            <input type="checkbox" id="chk-lgpd" name="chk-lgpd" required>
+            <label for="chk-lgpd">Li e aceito a <a href="politica-privacidade.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.</label>
+          </div>
+          <span class="field-error" id="err-lgpd" role="alert"></span>
+          <div id="dados" class="consent-inline consent-block--compact">
+            <input type="checkbox" id="chk-dados" name="chk-dados" required>
+            <label for="chk-dados">Autorizo o uso dos meus dados para este pedido.</label>
+          </div>
+          <span class="field-error" id="err-dados" role="alert"></span>
+          <p class="form-success" id="form-success" role="status" hidden>Pedido pronto! Abrindo o WhatsApp…</p>
+          <button type="submit" class="btn btn-primary btn-submit-form btn-block" id="btn-enviar">
+            <span class="btn__spinner" aria-hidden="true"></span>
+            <span class="btn__label">Enviar pedido no WhatsApp</span>
+          </button>
+        </form>
+        <div id="kitchen-panel" class="kitchen-panel" hidden>
+          <p><strong>Preparo estimado:</strong> 15–25 min · <strong>Entrega:</strong> 30–45 min</p>
+          <p id="kitchen-steps-text" class="kitchen-steps">Pedido recebido</p>
+          <div class="kitchen-bar" aria-hidden="true"><div id="kitchen-bar-fill" class="kitchen-bar__fill"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section cta-final" aria-labelledby="cta-final-title">
+      <div class="container cta-final-inner" data-animate>
+        <h2 id="cta-final-title" class="h2">Fome bateu?</h2>
+        <p class="section-lead" style="margin-left:auto;margin-right:auto">Peça agora — fila enche no horário do jantar.</p>
+        <a href="#pedido" class="btn btn-primary btn-lg cta-pedir-agora">Pedir Agora</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast-site" class="toast-site" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+
+  <div id="sticky-cta-bar" class="sticky-cta-mobile sticky-cta-mobile" aria-hidden="true">
+    <div class="container" style="display:flex;justify-content:center">
+      <a href="#pedido" class="btn btn-primary btn-lg btn-block cta-pedir-agora" style="max-width:400px">Pedir Agora</a>
+    </div>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <p class="logo footer-logo">Chama<span>Burger</span></p>
+        <p>Hambúrguer artesanal · entrega e retirada</p>
+        <p><strong>CNPJ:</strong> 12.345.678/0001-90</p>
+        <p><strong>Endereço:</strong> Av. Exemplo, 1000 — Salvador/BA</p>
+        <ul class="footer-legal">
+          <li><a href="politica-privacidade.html">Política de Privacidade</a></li>
+          <li><a href="termos-de-uso.html">Termos de Uso</a></li>
+          <li><a href="politica-privacidade.html#lgpd-direitos">LGPD</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="footer-heading">Funcionamento</h3>
+        <p>Seg–qui: 11h–23h</p>
+        <p>Sex–sáb: 11h–00h</p>
+        <p>Dom: 12h–22h</p>
+      </div>
+      <div>
+        <h3 class="footer-heading">DPO</h3>
+        <p><a href="mailto:dpo@chamaburger.com.br">dpo@chamaburger.com.br</a></p>
+      </div>
+      <div>
+        <h3 class="footer-heading">Redes</h3>
+        <ul class="footer-social">
+          <li><a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+          <li><a href="https://www.ifood.com.br/" target="_blank" rel="noopener noreferrer">iFood</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© 2026 Chama Burger.</p>
+      <button type="button" class="btn btn-outline" id="btn-install-pwa" hidden>Instalar app</button>
+    </div>
+  </footer>
+
+  <a href="#" class="whatsapp-float" id="whatsapp-float" aria-label="WhatsApp: pedir pedido" title="WhatsApp">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+
+  <div id="lgpd-banner" class="lgpd-banner" role="dialog" aria-labelledby="lgpd-banner-title" hidden>
+    <div class="lgpd-banner-inner">
+      <div>
+        <p id="lgpd-banner-title" class="lgpd-banner-title">Privacidade e cookies</p>
+        <p id="lgpd-banner-desc" class="lgpd-banner-text">Usamos cookies necessários e, com seu consentimento, analíticos e de marketing (Google Analytics / Meta Pixel). <a href="politica-privacidade.html">Política</a>.</p>
+      </div>
+      <div class="lgpd-banner-actions">
+        <button type="button" class="lgpd-btn lgpd-btn-primary" id="lgpd-accept-all">Aceitar Todos</button>
+        <button type="button" class="lgpd-btn lgpd-btn-ghost" id="lgpd-customize">Personalizar</button>
+        <button type="button" class="lgpd-btn lgpd-btn-muted" id="lgpd-reject">Recusar</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="lgpd-modal" class="lgpd-modal" role="dialog" aria-labelledby="lgpd-modal-title" hidden>
+    <div class="lgpd-modal-panel">
+      <div class="lgpd-modal-head">
+        <h2 id="lgpd-modal-title" class="lgpd-modal-title">Preferências</h2>
+        <button type="button" class="lgpd-modal-close" id="lgpd-modal-close" aria-label="Fechar">&times;</button>
+      </div>
+      <ul class="lgpd-cat-list">
+        <li class="lgpd-cat-disabled">
+          <input type="checkbox" id="lgpd-cat-nec" checked disabled>
+          <div><label for="lgpd-cat-nec">Necessários</label><small>Sempre ativos.</small></div>
+        </li>
+        <li>
+          <input type="checkbox" id="lgpd-cat-analytics">
+          <div><label for="lgpd-cat-analytics">Analíticos</label><small>Google Analytics (medição agregada).</small></div>
+        </li>
+        <li>
+          <input type="checkbox" id="lgpd-cat-marketing">
+          <div><label for="lgpd-cat-marketing">Marketing</label><small>Meta Pixel / remarketing (90 dias).</small></div>
+        </li>
+      </ul>
+      <button type="button" class="lgpd-btn lgpd-btn-primary lgpd-btn-block" id="lgpd-save-prefs">Salvar</button>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/security.js"></script>
+  <script src="js/tracking.js"></script>
+  <script src="js/lgpd.js"></script>
+  <script src="js/menu-dinamico.js"></script>
+  <script src="js/fidelidade.js"></script>
+  <script src="js/pwa.js"></script>
+  <script src="js/main.js" defer></script>
+</body>
+</html>

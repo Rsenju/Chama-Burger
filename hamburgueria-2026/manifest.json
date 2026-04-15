@@ -1,0 +1,19 @@
+{
+  "name": "Chama Burger",
+  "short_name": "Chama",
+  "description": "Hambúrguer artesanal — pedidos e delivery",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#e50914",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "assets/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
