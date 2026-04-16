@@ -59,6 +59,23 @@
   border-radius: var(--radius-pill);
 }
 
+.nav-fidelidade {
+  background: transparent;
+  color: var(--color-text-muted);
+  font-weight: var(--fw-semibold);
+  border: 1px solid var(--color-border);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--duration) var(--ease);
+}
+
+.nav-fidelidade:hover {
+  background: var(--color-primary);
+  color: #fff !important;
+  border-color: var(--color-primary);
+}
+
 .nav-toggle {
   width: var(--touch-min);
   height: var(--touch-min);
@@ -88,6 +105,9 @@
   left: 0;
   right: 0;
   top: var(--header-h);
+  /* FIX [Médio UX/Layout]: z-index explícito para garantir que o menu fique acima
+     de elementos com stacking context (hero, cards, etc.) */
+  z-index: 200;
   background: var(--color-surface);
   padding: var(--space-2);
 }
@@ -252,6 +272,37 @@
   margin-bottom: var(--space-3);
 }
 
+.hero-fidelidade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  margin-top: var(--space-2);
+}
+
+.hero-fidelidade p {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  margin: 0;
+}
+
+.btn-fidelidade {
+  background: linear-gradient(135deg, #f5c518 0%, #e50914 100%);
+  color: #fff;
+  font-weight: var(--fw-bold);
+  border: none;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+}
+
+.btn-fidelidade:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
+}
+
 /* Status aberto/fechado */
 .status-bar {
   padding: var(--space-2) 0;
@@ -313,27 +364,60 @@
   border-block: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* Cardápio com fotos 4:3 */
+/* Cardápio com fotos 4:3 — Mudança 1 */
 .menu-grid {
   display: grid;
   gap: var(--space-3);
 }
 
-/* imagem: zoom hover 300ms */
+/* Mudança 1: aspect-ratio 4/3, object-fit cover, hover scale 300ms, fallback cinza */
 .menu-card__media {
   position: relative;
   aspect-ratio: 4 / 3;
   border-radius: var(--radius-md);
   overflow: hidden;
   margin: 0 0 var(--space-2);
+  /* Fundo cinza exibido enquanto a imagem carrega e como fallback */
   background: var(--color-surface-2);
 }
 
+/* Ícone de hambúrguer centralizado como fallback visual (pseudo-elemento) */
+.menu-card__media::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, var(--color-surface-2) 0%, #111 100%);
+  z-index: 0;
+}
+
 .menu-card__media img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--duration-slow) var(--ease);
+  /* Mudança 1: transition 300ms */
+  transition: transform 300ms var(--ease), opacity 300ms var(--ease);
+  opacity: 1;
+}
+
+.menu-card__media img[src=""],
+.menu-card__media img:not([src]) {
+  opacity: 0;
+}
+
+/* Mudança 1: fallback — quando imagem falha, exibe ícone de hambúrguer */
+.menu-card__media--fallback::after {
+  content: "🍔";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background: var(--color-surface-2);
 }
 
 .menu-card:hover .menu-card__media img {
@@ -400,7 +484,7 @@
   margin: 0 0 var(--space-2);
 }
 
-/* Delivery — logos centralizados, gap 24px */
+/* Delivery — Mudança 2: logos SVG locais, 2 colunas desktop, 1 mobile, gap 24px */
 .delivery-grid {
   display: grid;
   gap: 24px;
@@ -422,21 +506,31 @@
   align-items: center;
   text-align: center;
   gap: var(--space-3);
+  transition: box-shadow var(--duration) var(--ease), border-color var(--duration) var(--ease);
 }
 
+.delivery-card-v2:hover {
+  box-shadow: var(--shadow-card);
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+/* Mudança 2: logo no topo, max-width 120px */
 .delivery-card-v2__logo {
   width: 100%;
   max-width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 72px;
+  min-height: 56px;
 }
 
+.delivery-card-v2__logo img,
 .delivery-card-v2__logo svg {
   width: 100%;
   max-width: 120px;
   height: auto;
+  border-radius: 10px;
+  display: block;
 }
 
 .delivery-card-v2 p {
@@ -452,6 +546,9 @@
   background: #fff;
   border-radius: var(--radius-sm);
   padding: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .delivery-card-v2 .delivery-qr img {
@@ -557,6 +654,12 @@
   border-color: var(--color-accent);
 }
 
+#fidelidade-msg {
+  text-align: center;
+  max-width: 100%;
+  margin: var(--space-2) auto;
+}
+
 /* Checkout */
 .checkout-section {
   background: var(--color-bg);
@@ -599,32 +702,37 @@
   color: #333;
 }
 
-/* Form — compacto (problema UX 3) */
+/* Form — Mudança 3: formulário compacto */
 .pedido-section .pedido-form {
+  /* Mudança 3: max-width 600px centralizado */
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
 }
 
 .pedido-form .form-group {
-  margin-bottom: 24px;
+  /* Mudança 3: gap entre campos 20px (era 32px) */
+  margin-bottom: 20px;
 }
 
 .pedido-form.compact-form label {
+  /* Mudança 3: label font-size 0.9rem */
   font-size: 0.9rem;
   font-weight: var(--fw-semibold);
-  margin-bottom: var(--space-1);
+  display: block;
+  margin-bottom: 6px;
 }
 
 .pedido-form.compact-form input,
 .pedido-form.compact-form textarea {
+  /* Mudança 3: padding 16px, height 48px */
   padding: 12px 16px;
   min-height: 48px;
   font-size: 1rem;
 }
 
 .pedido-form.compact-form textarea {
-  min-height: 100px;
+  min-height: 96px;
   resize: vertical;
 }
 
@@ -691,28 +799,42 @@
   transform: translateY(0);
 }
 
+/* Mudança 3: checkbox LGPD layout horizontal, label ao lado */
 .consent-inline {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-2);
-  padding: var(--space-2);
+  padding: 10px var(--space-2);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-sm);
-  margin-bottom: var(--space-2);
+  margin-bottom: 12px;
 }
 
 .consent-inline.consent-block--compact {
   flex-wrap: nowrap;
+  align-items: center;
+}
+
+.consent-inline input[type="checkbox"] {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-accent);
+  cursor: pointer;
 }
 
 .consent-inline label {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-weight: var(--fw-medium);
   margin: 0;
+  line-height: 1.4;
+  cursor: pointer;
 }
 
+/* Mudança 3: botão CTA compacto — padding 14px 28px, font-size 0.95rem */
 .pedido-form .btn-submit-form {
   padding: 14px 28px;
+  font-size: 0.95rem;
   min-height: 48px;
 }
 
@@ -778,7 +900,7 @@
   }
 }
 
-/* WhatsApp flutuante 64px */
+/* WhatsApp flutuante */
 .whatsapp-float {
   position: fixed;
   right: var(--space-2);
@@ -831,6 +953,305 @@ body.lgpd-banner-open .whatsapp-float {
 .toast-site--visible {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
+}
+
+/* ============================================
+   MODAL FIDELIDADE CHAMA
+   ============================================ */
+
+.modal-fidelidade {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+}
+
+.modal-fidelidade[hidden] {
+  display: none;
+}
+
+.modal-fidelidade__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(4px);
+}
+
+.modal-fidelidade__content {
+  position: relative;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 480px;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: var(--space-3);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.modal-fidelidade__fechar {
+  position: absolute;
+  top: var(--space-2);
+  right: var(--space-2);
+  width: 40px;
+  height: 40px;
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--duration) var(--ease);
+}
+
+.modal-fidelidade__fechar:hover {
+  background: var(--color-surface-2);
+  color: var(--color-text);
+}
+
+.modal-fidelidade__header {
+  text-align: center;
+  margin-bottom: var(--space-3);
+}
+
+.modal-fidelidade__header h2 {
+  font-size: var(--fs-h2);
+  color: var(--color-primary);
+  margin-bottom: var(--space-1);
+}
+
+.modal-fidelidade__subtitle {
+  color: var(--color-text-muted);
+  font-size: var(--fs-body);
+}
+
+/* Formulário */
+.form-fidelidade__field {
+  margin-bottom: var(--space-2);
+}
+
+.form-fidelidade__field label {
+  display: block;
+  font-weight: var(--fw-semibold);
+  margin-bottom: var(--space-1);
+  color: var(--color-text);
+}
+
+.form-fidelidade__field input {
+  width: 100%;
+  padding: var(--space-1) var(--space-2);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: var(--fs-body);
+  transition: border-color var(--duration) var(--ease);
+}
+
+.form-fidelidade__field input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+.form-fidelidade__field input.is-invalid {
+  border-color: var(--color-error);
+}
+
+.form-fidelidade__error {
+  display: block;
+  color: var(--color-error);
+  font-size: 0.85rem;
+  margin-top: var(--space-1);
+  min-height: 1.2em;
+}
+
+.obrigatorio {
+  color: var(--color-error);
+}
+
+/* Benefícios */
+.form-fidelidade__beneficios {
+  margin: var(--space-3) 0;
+  padding: var(--space-2);
+  background: var(--color-surface-2);
+  border-radius: var(--radius-md);
+}
+
+.form-fidelidade__beneficios h3 {
+  font-size: var(--fs-h3);
+  text-align: center;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.beneficios-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-1);
+}
+
+.beneficio-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+  text-align: center;
+  background: var(--color-bg);
+}
+
+.beneficio-card--bronze {
+  border: 2px solid #cd7f32;
+}
+
+.beneficio-card--prata {
+  border: 2px solid #c0c0c0;
+}
+
+.beneficio-card--ouro {
+  border: 2px solid #ffd700;
+}
+
+.beneficio-card__nivel {
+  font-weight: var(--fw-bold);
+  font-size: 0.9rem;
+}
+
+.beneficio-card__desconto {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+}
+
+.beneficio-card__extra {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+.beneficio-card__req {
+  font-size: 0.7rem;
+  color: var(--color-text-muted);
+  margin-top: var(--space-1);
+}
+
+/* LGPD Checkboxes */
+.form-fidelidade__lgpd {
+  margin: var(--space-2) 0;
+}
+
+.checkbox-lgpd {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-1);
+  margin-bottom: var(--space-1);
+  cursor: pointer;
+}
+
+.checkbox-lgpd input {
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+  accent-color: var(--color-primary);
+}
+
+.checkbox-lgpd__text {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* Botão Submit */
+.form-fidelidade__actions {
+  margin-top: var(--space-2);
+}
+
+.form-fidelidade__actions .btn {
+  width: 100%;
+}
+
+.form-fidelidade__actions .btn.is-loading {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Resultado */
+.form-fidelidade__result {
+  margin-top: var(--space-2);
+  padding: var(--space-2);
+  border-radius: var(--radius-md);
+  text-align: center;
+}
+
+.form-fidelidade__result--success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.form-fidelidade__result--error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.result-success h4,
+.result-error h4 {
+  margin-bottom: var(--space-1);
+}
+
+.result-nivel {
+  font-size: 1rem;
+  color: var(--color-primary);
+}
+
+.result-pedidos {
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: #25d366;
+  color: #fff;
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-md);
+  font-weight: var(--fw-semibold);
+  text-decoration: none;
+  margin-top: var(--space-1);
+}
+
+.btn-whatsapp:hover {
+  background: #128c7e;
+  text-decoration: none;
+}
+
+.result-icon {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  .beneficios-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-1);
+  }
+  
+  .beneficio-card {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--space-1) var(--space-2);
+  }
+  
+  .beneficio-card__nivel {
+    font-size: 1rem;
+  }
+}
   pointer-events: auto;
 }
 
@@ -954,6 +1375,42 @@ body.lgpd-banner-open .whatsapp-float {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+.footer-heading {
+  font-size: var(--fs-small);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+.footer-social {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.footer-social li {
+  margin-bottom: var(--space-1);
+}
+
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  transition: color var(--duration) var(--ease);
+}
+
+.footer-social a:hover {
+  color: var(--color-primary);
+}
+
+.footer-social svg {
+  flex-shrink: 0;
 }
 
 @media (min-width: 600px) {

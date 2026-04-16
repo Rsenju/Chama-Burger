@@ -1,11 +1,7 @@
-/**
- * UI principal: navegação, CTAs, formulário, checkout, cozinha, sticky CTA, carrossel, WhatsApp.
- */
 (function () {
   "use strict";
 
-  var WA_MSG_DEFAULT =
-    "Olá! Vi no site e quero fazer um pedido.";
+  var WA_MSG_DEFAULT = "Olá! Vi no site e quero fazer um pedido.";
 
   function waNumber() {
     return (typeof CONFIG !== "undefined" && CONFIG.whatsappNumber) || "5511999999999";
@@ -159,13 +155,32 @@
     });
   }
 
+  /**
+   * FIX [Baixo UX]: Countdown persistente via sessionStorage.
+   * O timestamp de fim é salvo na sessão — ao recarregar a mesma aba ou abrir
+   * uma nova na mesma sessão, o timer continua de onde parou em vez de reiniciar.
+   */
   function initCountdown() {
     var mins = countdownMinutes();
-    var end = Date.now() + mins * 60 * 1000 + Math.floor(Math.random() * 45000);
+    var CD_KEY = "chama_cd_end";
+    var end;
+    try {
+      var stored = parseInt(sessionStorage.getItem(CD_KEY), 10);
+      if (stored && stored > Date.now()) {
+        end = stored;
+      } else {
+        end = Date.now() + mins * 60 * 1000 + Math.floor(Math.random() * 45000);
+        sessionStorage.setItem(CD_KEY, String(end));
+      }
+    } catch (e) {
+      end = Date.now() + mins * 60 * 1000;
+    }
+
     var hEl = document.getElementById("cd-h");
     var mEl = document.getElementById("cd-m");
     var sEl = document.getElementById("cd-s");
     if (!hEl || !mEl || !sEl) return;
+
     function tick() {
       var now = Date.now();
       var left = Math.max(0, end - now);
@@ -176,7 +191,10 @@
       hEl.textContent = String(h).padStart(2, "0");
       mEl.textContent = String(m).padStart(2, "0");
       sEl.textContent = String(sec).padStart(2, "0");
-      if (left <= 0) end = Date.now() + mins * 60 * 1000;
+      if (left <= 0) {
+        end = Date.now() + mins * 60 * 1000;
+        try { sessionStorage.setItem(CD_KEY, String(end)); } catch (e) {}
+      }
     }
     tick();
     setInterval(tick, 1000);
@@ -189,8 +207,8 @@
         if (btn.classList.contains("btn--disabled")) return;
         var product = btn.getAttribute("data-product") || "Item";
         var price = btn.getAttribute("data-price") || "";
-        var p = CHAMASecurity ? CHAMASecurity.sanitizeInput(product) : product;
-        var pr = CHAMASecurity ? CHAMASecurity.sanitizeInput(price) : price;
+        var p = window.CHAMASecurity ? CHAMASecurity.sanitizeInput(product) : product;
+        var pr = window.CHAMASecurity ? CHAMASecurity.sanitizeInput(price) : price;
         abrirWhatsApp(
           "Olá! Quero pedir pelo site:\n\n*Item:* " +
             p +
@@ -242,9 +260,28 @@
     }, 2500);
   }
 
+  /**
+   * FIX [Médio Funcionalidade]: Se CHAMASecurity não carregar, o formulário é
+   * desabilitado com mensagem de erro em vez de permanecer ativo sem validação.
+   */
   function initForm() {
     var form = document.getElementById("form-pedido");
-    if (!form || !window.CHAMASecurity) return;
+    if (!form) return;
+
+    if (!window.CHAMASecurity) {
+      var btn = document.getElementById("btn-enviar");
+      if (btn) {
+        btn.disabled = true;
+        btn.querySelector(".btn__label").textContent = "Formulário indisponível";
+      }
+      var g = document.getElementById("err-geral");
+      if (g) {
+        g.textContent = "Erro ao carregar validação. Recarregue a página ou use o WhatsApp diretamente.";
+        g.hidden = false;
+      }
+      return;
+    }
+
     var successEl = document.getElementById("form-success");
     var btn = document.getElementById("btn-enviar");
 

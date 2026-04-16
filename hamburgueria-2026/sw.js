@@ -1,10 +1,8 @@
-/**
- * Service Worker — cache de assets estáticos (versão do cache).
- */
 var CACHE_NAME = "chama-burger-v2026-1";
 var ASSETS = [
   "./",
   "./index.html",
+  "./offline.html",
   "./css/tokens.css",
   "./css/main.css",
   "./css/components.css",
@@ -40,8 +38,14 @@ self.addEventListener("activate", function (e) {
 self.addEventListener("fetch", function (e) {
   if (e.request.method !== "GET") return;
   e.respondWith(
-    caches.match(e.request).then(function (r) {
-      return r || fetch(e.request);
+    caches.match(e.request).then(function (cached) {
+      if (cached) return cached;
+      return fetch(e.request).catch(function () {
+        /* FIX: fallback para offline.html em navegações de página */
+        if (e.request.mode === "navigate") {
+          return caches.match("./offline.html");
+        }
+      });
     })
   );
 });

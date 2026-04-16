@@ -1,6 +1,21 @@
 /**
  * Banner de cookies, preferências e armazenamento criptografado (AES-GCM) do registro de consentimento.
+ *
+ * FIX [Alto Segurança/LGPD]: AVISO IMPORTANTE SOBRE A CRIPTOGRAFIA:
+ * A chave AES-256 é derivada de uma string literal estática (PBKDF2_SALT_STATIC) presente
+ * neste código-fonte público. Isso significa que qualquer pessoa com acesso ao código pode
+ * descriptografar o consentimento armazenado no dispositivo do usuário.
+ *
+ * OBJETIVO REAL: Esta implementação oferece INTEGRIDADE e ESTRUTURA ao registro de
+ * consentimento — não CONFIDENCIALIDADE real. Serve para demonstrar boa-fé na LGPD
+ * (registro de quem consentiu, quando e com qual IP), mas NÃO deve ser interpretada
+ * como proteção contra acesso de terceiros ao dispositivo.
+ *
+ * EM PRODUÇÃO: O registro de consentimento com validade legal deve ser armazenado no
+ * servidor (backend/banco de dados), assinado com chave privada e associado ao usuário
+ * autenticado. Use HSM ou KMS para gerenciamento de chaves.
  */
+
 (function (global) {
   "use strict";
 
@@ -23,7 +38,8 @@
   }
 
   /**
-   * Deriva chave AES-256 a partir de material fixo local (em produção, use backend/HSM).
+   * Deriva chave AES-256 a partir de material fixo local.
+   * NOTA: Chave derivada de literal público — proteção de integridade, não confidencialidade.
    */
   function deriveKey() {
     var enc = new TextEncoder();
@@ -52,9 +68,6 @@
       });
   }
 
-  /**
-   * Criptografa objeto de consentimento (timestamp, IP, categorias).
-   */
   function encryptConsentPayload(obj) {
     var enc = new TextEncoder();
     var json = JSON.stringify(obj);

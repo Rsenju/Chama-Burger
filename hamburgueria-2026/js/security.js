@@ -1,6 +1,3 @@
-/**
- * Validação, sanitização anti-XSS/SQLi, anti path traversal e rate limiting (mitigação client-side).
- */
 (function (global) {
   "use strict";
 
@@ -11,8 +8,6 @@
 
   /**
    * Escapa entidades HTML (uso em saídas; preferir sempre textContent no DOM).
-   * @param {string} s
-   * @returns {string}
    */
   function escapeHtml(s) {
     if (s == null) return "";
@@ -24,8 +19,6 @@
 
   /**
    * Remove tags, protocolos perigosos, padrões comuns de injeção e control chars.
-   * @param {string} raw
-   * @returns {string}
    */
   function sanitizeInput(raw) {
     if (raw == null) return "";
@@ -44,7 +37,6 @@
     return s.trim();
   }
 
-  /** Alias semântico para formulários */
   function sanitizeText(raw) {
     return sanitizeInput(raw);
   }
@@ -54,7 +46,7 @@
   }
 
   /**
-   * Hash não criptográfico para chave de rate limit (evita armazenar IP em claro no nome da chave).
+   * Hash não criptográfico para chave de rate limit.
    */
   function hashIdentifier(str) {
     var s = String(str || "unknown");
@@ -95,9 +87,6 @@
     } catch (e) {}
   }
 
-  /**
-   * Telefone BR: 10 ou 11 dígitos; celular com 9 na posição após DDD.
-   */
   function telefoneValido(tel) {
     var d = apenasDigitos(tel);
     if (!/^[1-9]{2}/.test(d)) return false;
@@ -140,7 +129,26 @@
   }
 
   /**
-   * IP para consentimento/rate limit; falha silenciosa (rede offline etc.).
+   * FIX [Médio Segurança]: Gera identificador local de sessão como fallback quando IP
+   * externo não está disponível (rede offline, API bloqueada etc.).
+   * Combina sessionStorage token + userAgent hash — não é IP real, mas mantém
+   * proteção de rate limit na sessão atual em vez de anulá-la com chave vazia.
+   */
+  function getLocalFallbackId() {
+    var KEY = "chama_session_rid";
+    try {
+      var stored = sessionStorage.getItem(KEY);
+      if (stored) return "local_" + stored;
+      var rand = Math.random().toString(36).slice(2) + Date.now().toString(36);
+      sessionStorage.setItem(KEY, rand);
+      return "local_" + rand;
+    } catch (e) {
+      return "local_" + hashIdentifier(navigator.userAgent + screen.width);
+    }
+  }
+
+  /**
+   * IP para consentimento/rate limit; falha silenciosa com fallback local.
    */
   function fetchClientIp() {
     return fetch("https://api.ipify.org?format=json", { cache: "no-store" })
@@ -149,16 +157,14 @@
         return r.json();
       })
       .then(function (j) {
-        return j && j.ip ? String(j.ip) : "";
+        return j && j.ip ? String(j.ip) : getLocalFallbackId();
       })
       .catch(function () {
-        return "";
+        /* FIX: retorna ID de sessão local em vez de string vazia para preservar rate limit */
+        return getLocalFallbackId();
       });
   }
 
-  /**
-   * Limite: no máximo RATE_MAX envios na janela; após exceder, bloqueio RATE_COOLDOWN_MS.
-   */
   function canSubmit(ip) {
     var now = Date.now();
     var state = loadRateState(ip);
@@ -190,7 +196,6 @@
     saveRateState(ip, state);
   }
 
-  /** Segundos restantes de bloqueio (0 se não bloqueado). */
   function cooldownRemainingSec(ip) {
     var state = loadRateState(ip);
     var now = Date.now();
@@ -198,9 +203,6 @@
     return Math.ceil((state.blockUntil - now) / 1000);
   }
 
-  /**
-   * Valida formulário de pedido + checkboxes LGPD.
-   */
   function validatePedidoForm(getEl) {
     var errors = {};
     var nome = getEl("nome");
