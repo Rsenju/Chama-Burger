@@ -1,0 +1,12 @@
+{
+	"Copilot Chama Burger": {
+		"scope": "",
+		"prefix": "chama",
+		"body": [
+			"LEIA PRIMEIRO: COPILOT_RULES.md",
+			"",
+			"$1"
+		],
+		"description": "Inicia prompt com regras do projeto Chama Burger"
+	}
+}
