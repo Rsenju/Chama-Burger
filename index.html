@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Cache-Control" content="public, max-age=3600">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com https://api.qrserver.com; connect-src 'self' https://api.ipify.org https://www.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net https://sheetdb.io; font-src 'self' data:; media-src 'self' https://storage.googleapis.com;">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com https://connect.facebook.net; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://images.unsplash.com https://api.qrserver.com; connect-src 'self' https://api.ipify.org https://www.google-analytics.com https://www.googletagmanager.com https://connect.facebook.net; font-src 'self' data:; media-src 'self' https://storage.googleapis.com;">
   <meta http-equiv="X-Frame-Options" content="DENY">
   <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
   <meta name="description" content="Hambúrgueres artesanais em Salvador. Peça pelo WhatsApp, delivery iFood e 99Food. Ingredientes frescos e entrega rápida.">
@@ -65,7 +65,6 @@
           <li><a href="#cardapio">Cardápio</a></li>
           <li><a href="#delivery">Delivery</a></li>
           <li><a href="#depoimentos">Clientes</a></li>
-          <li><button type="button" class="nav-fidelidade" onclick="FidelidadeChama.abrir()" aria-label="Programa de Fidelidade">🎁 Fidelidade</button></li>
           <li><a href="#pedido" class="nav-cta">Pedir</a></li>
         </ul>
       </nav>
@@ -77,7 +76,6 @@
       <ul>
         <li><a href="#cardapio">Cardápio</a></li>
         <li><a href="#delivery">Delivery</a></li>
-        <li><button type="button" class="nav-fidelidade" onclick="FidelidadeChama.abrir()">🎁 Fidelidade</button></li>
         <li><a href="#pedido">Fazer pedido</a></li>
       </ul>
     </div>
@@ -102,10 +100,6 @@
           <a href="#cardapio" class="btn btn-outline btn-lg">Ver cardápio</a>
         </div>
         <p class="hero-proof" data-animate><strong>+2.400 pedidos</strong> só este mês · <span class="stars" aria-hidden="true">★★★★★</span> 4,9 no app</p>
-        <div class="hero-fidelidade" data-animate>
-          <p>🎁 <strong>Programa Fidelidade Chama</strong> — Cadastre-se e ganhe benefícios exclusivos!</p>
-          <button type="button" class="btn btn-sm btn-fidelidade" onclick="FidelidadeChama.abrir()">Quero participar</button>
-        </div>
       </div>
     </section>
 
@@ -148,12 +142,14 @@
              com os dados de data/cardapio.json. O conteúdo estático abaixo é o fallback
              caso fetch falhe (sem servidor / arquivo local). -->
         <div class="menu-grid" id="menu-grid-dinamico">
+          <!-- Fallback estático — cardapio-loader.js substitui com data/cardapio.json quando há servidor -->
           <article class="menu-card menu-card--hit" data-animate>
             <span class="menu-badge">Mais vendido</span>
             <figure class="menu-card__media">
               <picture>
+                <source type="image/avif" srcset="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80&fm=avif">
                 <source type="image/webp" srcset="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80&fm=webp">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" decoding="async" alt="Smash Duplo Clássico — dois smashes, bacon crocante, queijo cheddar duplo e pão brioche">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" decoding="async" alt="Smash Duplo Clássico: dois smashes de carne com queijo cheddar derretido, cebola caramelizada e maionese da casa no pão brioche" onerror="this.onerror=null;this.src='assets/images/cardapio/smash-duplo.svg'">
               </picture>
             </figure>
             <h3 class="h3">Smash Duplo Clássico</h3>
@@ -165,8 +161,9 @@
             <span class="menu-badge">Mais vendido</span>
             <figure class="menu-card__media">
               <picture>
+                <source type="image/avif" srcset="https://images.unsplash.com/photo-1553979459-d2229ba7433f?w=800&q=80&fm=avif">
                 <source type="image/webp" srcset="https://images.unsplash.com/photo-1553979459-d2229ba7433f?w=800&q=80&fm=webp">
-                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433f?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Bacon Crunch Premium — blend 180g, bacon crocante, queijo suíço e barbecue">
+                <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433f?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" decoding="async" alt="Bacon Crunch Premium: blend 180g com bacon crocante empilhado, queijo suíço e barbecue defumado" onerror="this.onerror=null;this.src='assets/images/cardapio/bacon-extreme.svg'">
               </picture>
             </figure>
             <h3 class="h3">Bacon Crunch Premium</h3>
@@ -177,8 +174,9 @@
           <article class="menu-card" data-animate>
             <figure class="menu-card__media">
               <picture>
+                <source type="image/avif" srcset="https://images.unsplash.com/photo-1619881590738-11107aefe924?w=800&q=80&fm=avif">
                 <source type="image/webp" srcset="https://images.unsplash.com/photo-1619881590738-11107aefe924?w=800&q=80&fm=webp">
-                <img src="https://images.unsplash.com/photo-1619881590738-11107aefe924?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Chicken Spicy — filé de frango empanado crocante com maionese picante">
+                <img src="https://images.unsplash.com/photo-1619881590738-11107aefe924?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" decoding="async" alt="Chicken Spicy: sanduíche de frango empanado crocante com maionese picante, alface crocante e pão com gergelim" onerror="this.onerror=null;this.src='assets/images/cardapio/chicken-crispy.svg'">
               </picture>
             </figure>
             <h3 class="h3">Chicken Spicy</h3>
@@ -189,8 +187,9 @@
           <article class="menu-card" data-animate>
             <figure class="menu-card__media">
               <picture>
+                <source type="image/avif" srcset="https://images.unsplash.com/photo-1525059696034-4967a7290028?w=800&q=80&fm=avif">
                 <source type="image/webp" srcset="https://images.unsplash.com/photo-1525059696034-4967a7290028?w=800&q=80&fm=webp">
-                <img src="https://images.unsplash.com/photo-1525059696034-4967a7290028?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Veggie Fire — hambúrguer vegetal com grão-de-bico, rúcula e pesto">
+                <img src="https://images.unsplash.com/photo-1525059696034-4967a7290028?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" decoding="async" alt="Veggie Fire: hambúrguer artesanal de grão-de-bico com queijo vegetal, rúcula fresca e pesto de manjericão" onerror="this.onerror=null;this.src='assets/images/cardapio/veggie-burger.svg'">
               </picture>
             </figure>
             <h3 class="h3">Veggie Fire</h3>
@@ -203,7 +202,7 @@
               <picture>
                 <source type="image/avif" srcset="https://images.unsplash.com/photo-1550547660-d9440df05f1d?w=800&q=80&fm=avif">
                 <source type="image/webp" srcset="https://images.unsplash.com/photo-1550547660-d9440df05f1d?w=800&q=80&fm=webp">
-                <img src="https://images.unsplash.com/photo-1550547660-d9440df05f1d?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Chama Triplo — três carnes grelhadas, queijo derretido e jalapeño">
+                <img src="https://images.unsplash.com/photo-1550547660-d9440df05f1d?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" decoding="async" alt="Chama Triplo: três carnes grelhadas com três queijos derretidos, jalapeño e molho especial da casa" onerror="this.onerror=null;this.src='assets/images/cardapio/chama-triplo.svg'">
               </picture>
             </figure>
             <h3 class="h3">Chama Triplo</h3>
@@ -214,9 +213,9 @@
           <article class="menu-card" data-animate>
             <figure class="menu-card__media">
               <picture>
-                <source type="image/avif" srcset="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=800&q=80&fm=avif">
-                <source type="image/webp" srcset="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=800&q=80&fm=webp">
-                <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" alt="Combo Kids — mini hambúrguer smash com pão brioche, batata rústica dourada e suco natural">
+                <source type="image/avif" srcset="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80&fm=avif">
+                <source type="image/webp" srcset="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80&fm=webp">
+                <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?w=800&q=80&fm=jpg" width="800" height="600" loading="lazy" decoding="async" alt="Combo Kids: mini smash de carne com batata rústica dourada e suco natural — porção pensada para crianças" onerror="this.onerror=null;this.src='assets/images/cardapio/combo-kids.svg'">
               </picture>
             </figure>
             <h3 class="h3">Combo Kids</h3>
@@ -225,6 +224,7 @@
             <a href="#" class="btn btn-whatsapp menu-wa" role="button" data-product="Combo Kids" data-price="R$ 28,90">Pedir via WhatsApp</a>
           </article>
         </div>
+      </div>
     </section>
 
     <section id="delivery" class="section delivery" aria-labelledby="delivery-title">
@@ -232,14 +232,16 @@
         <h2 id="delivery-title" class="section-title" data-animate>Delivery parceiro</h2>
         <p class="section-lead" data-animate>Peça pelo app oficial — escaneie o QR ou toque em Pedir Agora.</p>
         <div class="delivery-grid">
-          <!-- Mudança 2: logos SVG locais (assets/logos/), max-width 120px, cores de marca -->
           <article class="delivery-card-v2" data-animate>
+            <!-- Logo acima do título, QR code e botão — ordem: logo → título → descrição → QR → botão -->
             <div class="delivery-card-v2__logo">
               <img src="assets/logos/ifood.svg" width="120" height="56" alt="iFood" loading="lazy">
             </div>
             <h3 class="h3">iFood</h3>
             <p>Cashback, cupons e rastreio de entrega em tempo real.</p>
-            <div class="delivery-qr"><img id="qr-ifood" src="" width="112" height="112" loading="lazy" alt="QR Code iFood — aponte a câmera para abrir"></div>
+            <div class="delivery-qr">
+              <img id="qr-ifood" src="" width="112" height="112" loading="lazy" alt="QR Code iFood — aponte a câmera para abrir">
+            </div>
             <a id="delivery-ifood" class="btn btn-primary btn-block" href="#" target="_blank" rel="noopener noreferrer">Pedir Agora</a>
           </article>
           <article class="delivery-card-v2" data-animate>
@@ -248,7 +250,9 @@
             </div>
             <h3 class="h3">99Food</h3>
             <p>Ofertas locais e entrega rápida pela cidade.</p>
-            <div class="delivery-qr"><img id="qr-99" src="" width="112" height="112" loading="lazy" alt="QR Code 99Food — aponte a câmera para abrir"></div>
+            <div class="delivery-qr">
+              <img id="qr-99" src="" width="112" height="112" loading="lazy" alt="QR Code 99Food — aponte a câmera para abrir">
+            </div>
             <a id="delivery-99" class="btn btn-primary btn-block" href="#" target="_blank" rel="noopener noreferrer">Pedir Agora</a>
           </article>
         </div>
@@ -339,8 +343,8 @@
         <p class="section-lead" data-animate>A cada 5 pedidos qualificados, o 6º burger sai grátis (conforme regras no balcão).</p>
         <div class="fidelidade-wrap" data-animate>
           <div id="fidelidade-selos" class="fidelidade-selos" aria-live="polite"></div>
-          <p id="fidelidade-msg">Carregando selos…</p>
-          <button type="button" class="btn btn-outline" id="fidelidade-demo-add">Simular +1 pedido (demo)</button>
+          <p id="fidelidade-msg" class="fidelidade-msg-text">Carregando selos…</p>
+          <button type="button" class="btn btn-outline fidelidade-btn-demo" id="fidelidade-demo-add">Simular +1 pedido (demo)</button>
         </div>
       </div>
     </section>
@@ -371,10 +375,11 @@
       <div class="container">
         <h2 id="video-title" class="section-title" data-animate>Por trás dos bastidores</h2>
         <div class="video-wrap" data-animate>
-          <video controls width="720" playsinline preload="metadata" poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1280&q=80" aria-label="Vídeo do preparo de hambúrguer artesanal">
-            <source src="https://videos.pexels.com/video-files/856979/856979-hd_1920_1080_30fps.mp4" type="video/mp4">
-            <source src="https://videos.pexels.com/video-files/856979/856979-hd_1920_1080_30fps.webm" type="video/webm">
-            <p>Seu navegador não suporta vídeo. <a href="https://videos.pexels.com/video-files/856979/856979-hd_1920_1080_30fps.mp4" download>Baixe o vídeo</a></p>
+          <video controls width="720" playsinline poster="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=1280&q=80">
+            <source src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4">
+            <!-- FIX [Médio Acessibilidade]: <track> removido pois assets/captions.vtt não existe.
+                 Para habilitar legendas, crie o arquivo e descomente:
+                 <track kind="captions" srclang="pt-BR" label="Português (Brasil)" src="assets/captions.vtt" default> -->
           </video>
         </div>
       </div>
@@ -406,12 +411,12 @@
             <textarea id="mensagem" name="mensagem" rows="3" required maxlength="500" minlength="5" placeholder="Itens e observações"></textarea>
             <span class="field-error" id="err-mensagem" role="alert"></span>
           </div>
-          <div id="lgpd" class="consent-inline consent-block--compact">
+          <div class="consent-inline consent-block--compact" id="lgpd">
             <input type="checkbox" id="chk-lgpd" name="chk-lgpd" required>
             <label for="chk-lgpd">Li e aceito a <a href="politica-privacidade.html" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>.</label>
           </div>
           <span class="field-error" id="err-lgpd" role="alert"></span>
-          <div id="dados" class="consent-inline consent-block--compact">
+          <div class="consent-inline consent-block--compact" id="dados">
             <input type="checkbox" id="chk-dados" name="chk-dados" required>
             <label for="chk-dados">Autorizo o uso dos meus dados para este pedido.</label>
           </div>
@@ -474,21 +479,29 @@
         <h3 class="footer-heading">Redes</h3>
         <ul class="footer-social">
           <li>
-            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-              Instagram
+            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="footer-social__link">
+              <svg class="footer-social__icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+              </svg>
+              <span>Instagram</span>
             </a>
           </li>
           <li>
-            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/></svg>
-              TikTok
+            <a href="https://www.tiktok.com/" target="_blank" rel="noopener noreferrer" class="footer-social__link">
+              <svg class="footer-social__icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.76a4.85 4.85 0 01-1.01-.07z"/>
+              </svg>
+              <span>TikTok</span>
             </a>
           </li>
           <li>
-            <a href="https://www.ifood.com.br/" target="_blank" rel="noopener noreferrer" aria-label="iFood">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.161c-.18 1.897-.962 6.502-1.359 8.627-.168.9-.5 1.201-.82 1.23-.696.064-1.225-.46-1.901-.903-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-              iFood
+            <a href="https://www.ifood.com.br/" target="_blank" rel="noopener noreferrer" class="footer-social__link">
+              <svg class="footer-social__icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/>
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="0"/>
+                <path d="M11 8h2v8h-2zm-3 2h2v6H8zm6 1h2v5h-2z"/>
+              </svg>
+              <span>iFood</span>
             </a>
           </li>
         </ul>

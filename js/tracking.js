@@ -1,6 +1,10 @@
 /**
  * GA4 / Meta Pixel / GTM condicionados ao consentimento LGPD (flags em localStorage).
  * Cookies de remarketing: definidos apenas se Marketing = true (max-age 90 dias).
+ *
+ * NOTA: Se gtmId estiver preenchido em CONFIG, GA4 e Meta Pixel não são carregados
+ * diretamente — assumindo que o GTM container gerencia ambos. Preencha apenas um dos
+ * dois caminhos: gtmId OU ga4MeasurementId/metaPixelId.
  */
 (function (global) {
   "use strict";
@@ -41,9 +45,7 @@
     if (!measurementId || global.__ga4Loaded) return;
     global.__ga4Loaded = true;
     global.dataLayer = global.dataLayer || [];
-    global.gtag = function () {
-      global.dataLayer.push(arguments);
-    };
+    global.gtag = function () { global.dataLayer.push(arguments); };
     injectScript("https://www.googletagmanager.com/gtag/js?id=" + encodeURIComponent(measurementId), true, function () {
       global.gtag("js", new Date());
       global.gtag("config", measurementId, { anonymize_ip: true });
@@ -55,19 +57,11 @@
     global.__fbqLoaded = true;
     !(function (f, b, e, v, n, t, s) {
       if (f.fbq) return;
-      n = f.fbq = function () {
-        n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-      };
+      n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments); };
       if (!f._fbq) f._fbq = n;
-      n.push = n;
-      n.loaded = !0;
-      n.version = "2.0";
-      n.queue = [];
-      t = b.createElement(e);
-      t.async = !0;
-      t.src = v;
-      s = b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t, s);
+      n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = [];
+      t = b.createElement(e); t.async = !0; t.src = v;
+      s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s);
     })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
     global.fbq("init", pixelId);
     global.fbq("track", "PageView");
@@ -82,9 +76,6 @@
     injectScript("https://www.googletagmanager.com/gtm.js?id=" + encodeURIComponent(gtmId), true);
   }
 
-  /**
-   * Aplica tags conforme flags salvas e CONFIG.
-   */
   function initFromStorage() {
     var flags = loadFlags();
     if (!flags || !flags.necessary) return;
@@ -92,7 +83,7 @@
 
     if (C.gtmId) {
       initGTM(C.gtmId);
-      return;
+      return; /* GTM gerencia GA4 e Pixel internamente */
     }
     if (flags.analytics && C.ga4MeasurementId) {
       initGA4(C.ga4MeasurementId);

@@ -1,0 +1,63 @@
+{
+  "categorias": [
+    {
+      "nome": "Hambúrgueres",
+      "itens": [
+        {
+          "id": "smash-duplo",
+          "nome": "Smash Duplo Clássico",
+          "descricao": "Dois smashes, queijo cheddar duplo, cebola caramelizada e maionese da casa no pão brioche.",
+          "preco": "36.90",
+          "foto": "smash-duplo.jpg",
+          "disponivel": true,
+          "tags": ["mais-vendido"]
+        },
+        {
+          "id": "bacon-extreme",
+          "nome": "Bacon Crunch Premium",
+          "descricao": "Blend 180g, bacon crocante, queijo suíço, barbecue defumado e pickles.",
+          "preco": "42.90",
+          "foto": "bacon-extreme.jpg",
+          "disponivel": true,
+          "tags": ["mais-vendido"]
+        },
+        {
+          "id": "chicken-crispy",
+          "nome": "Chicken Spicy",
+          "descricao": "Filé empanado crocante, maionese picante, alface e pão com gergelim.",
+          "preco": "32.90",
+          "foto": "chicken-crispy.jpg",
+          "disponivel": true,
+          "tags": []
+        },
+        {
+          "id": "veggie-burger",
+          "nome": "Veggie Fire",
+          "descricao": "Hambúrguer de grão-de-bico, queijo vegetal, rúcula e pesto de manjericão.",
+          "preco": "34.90",
+          "foto": "veggie-burger.jpg",
+          "disponivel": true,
+          "tags": []
+        },
+        {
+          "id": "chama-triplo",
+          "nome": "Chama Triplo",
+          "descricao": "Três carnes, três queijos, jalapeño e molho especial.",
+          "preco": "48.90",
+          "foto": "chama-triplo.jpg",
+          "disponivel": false,
+          "tags": []
+        },
+        {
+          "id": "combo-kids",
+          "nome": "Combo Kids",
+          "descricao": "Mini smash, batata rústica e suco natural.",
+          "preco": "28.90",
+          "foto": "combo-kids.jpg",
+          "disponivel": true,
+          "tags": []
+        }
+      ]
+    }
+  ]
+}

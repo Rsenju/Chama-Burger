@@ -59,23 +59,6 @@
   border-radius: var(--radius-pill);
 }
 
-.nav-fidelidade {
-  background: transparent;
-  color: var(--color-text-muted);
-  font-weight: var(--fw-semibold);
-  border: 1px solid var(--color-border);
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  transition: all var(--duration) var(--ease);
-}
-
-.nav-fidelidade:hover {
-  background: var(--color-primary);
-  color: #fff !important;
-  border-color: var(--color-primary);
-}
-
 .nav-toggle {
   width: var(--touch-min);
   height: var(--touch-min);
@@ -270,37 +253,6 @@
   flex-wrap: wrap;
   gap: var(--space-2);
   margin-bottom: var(--space-3);
-}
-
-.hero-fidelidade {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--space-2);
-  flex-wrap: wrap;
-  margin-top: var(--space-2);
-}
-
-.hero-fidelidade p {
-  color: var(--color-text-muted);
-  font-size: var(--fs-small);
-  margin: 0;
-}
-
-.btn-fidelidade {
-  background: linear-gradient(135deg, #f5c518 0%, #e50914 100%);
-  color: #fff;
-  font-weight: var(--fw-bold);
-  border: none;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-pill);
-  cursor: pointer;
-  transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
-}
-
-.btn-fidelidade:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(229, 9, 20, 0.4);
 }
 
 /* Status aberto/fechado */
@@ -624,13 +576,15 @@
   margin-top: var(--space-2);
 }
 
-/* Fidelidade */
+/* Fidelidade — Item 4: text-align center já no .fidelidade-wrap; melhorias de responsividade */
 .fidelidade-wrap {
   padding: var(--space-4);
   background: var(--color-surface);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(245, 197, 24, 0.25);
   text-align: center;
+  max-width: 560px;
+  margin-inline: auto;
 }
 
 .fidelidade-selos {
@@ -642,10 +596,12 @@
 }
 
 .fidelidade-selo {
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: 2px dashed rgba(255, 255, 255, 0.25);
+  /* Fácil toque em mobile */
+  flex-shrink: 0;
 }
 
 .fidelidade-selo--filled {
@@ -654,53 +610,19 @@
   border-color: var(--color-accent);
 }
 
-#fidelidade-msg {
+/* Item 4: texto de selos centralizado */
+.fidelidade-msg-text {
   text-align: center;
-  max-width: 100%;
-  margin: var(--space-2) auto;
+  color: var(--color-text-muted);
+  margin: 0 0 var(--space-3);
+  font-size: 0.95rem;
 }
 
-/* Checkout */
-.checkout-section {
-  background: var(--color-bg);
-  border-block: 1px solid rgba(255, 255, 255, 0.06);
+.fidelidade-btn-demo {
+  margin-inline: auto;
 }
 
-.checkout-grid {
-  display: grid;
-  gap: var(--space-4);
-}
-
-@media (min-width: 768px) {
-  .checkout-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-.checkout-card {
-  background: var(--color-surface);
-  padding: var(--space-3);
-  border-radius: var(--radius-md);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.checkout-card h3 {
-  margin-top: 0;
-}
-
-.pix-placeholder {
-  width: 100%;
-  max-width: 180px;
-  aspect-ratio: 1;
-  background: #fff;
-  margin: 0 auto var(--space-2);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.75rem;
-  color: #333;
-}
+/* Item 5: CSS do Checkout REMOVIDO (seção eliminada do HTML) */
 
 /* Form — Mudança 3: formulário compacto */
 .pedido-section .pedido-form {
@@ -953,305 +875,6 @@ body.lgpd-banner-open .whatsapp-float {
 .toast-site--visible {
   opacity: 1;
   transform: translateX(-50%) translateY(0);
-}
-
-/* ============================================
-   MODAL FIDELIDADE CHAMA
-   ============================================ */
-
-.modal-fidelidade {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: var(--space-2);
-}
-
-.modal-fidelidade[hidden] {
-  display: none;
-}
-
-.modal-fidelidade__overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
-}
-
-.modal-fidelidade__content {
-  position: relative;
-  background: var(--color-surface);
-  border-radius: var(--radius-lg);
-  width: 100%;
-  max-width: 480px;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: var(--space-3);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-}
-
-.modal-fidelidade__fechar {
-  position: absolute;
-  top: var(--space-2);
-  right: var(--space-2);
-  width: 40px;
-  height: 40px;
-  border: none;
-  background: transparent;
-  color: var(--color-text-muted);
-  cursor: pointer;
-  border-radius: var(--radius-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background var(--duration) var(--ease);
-}
-
-.modal-fidelidade__fechar:hover {
-  background: var(--color-surface-2);
-  color: var(--color-text);
-}
-
-.modal-fidelidade__header {
-  text-align: center;
-  margin-bottom: var(--space-3);
-}
-
-.modal-fidelidade__header h2 {
-  font-size: var(--fs-h2);
-  color: var(--color-primary);
-  margin-bottom: var(--space-1);
-}
-
-.modal-fidelidade__subtitle {
-  color: var(--color-text-muted);
-  font-size: var(--fs-body);
-}
-
-/* Formulário */
-.form-fidelidade__field {
-  margin-bottom: var(--space-2);
-}
-
-.form-fidelidade__field label {
-  display: block;
-  font-weight: var(--fw-semibold);
-  margin-bottom: var(--space-1);
-  color: var(--color-text);
-}
-
-.form-fidelidade__field input {
-  width: 100%;
-  padding: var(--space-1) var(--space-2);
-  border: 2px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-bg);
-  color: var(--color-text);
-  font-size: var(--fs-body);
-  transition: border-color var(--duration) var(--ease);
-}
-
-.form-fidelidade__field input:focus {
-  outline: none;
-  border-color: var(--color-primary);
-}
-
-.form-fidelidade__field input.is-invalid {
-  border-color: var(--color-error);
-}
-
-.form-fidelidade__error {
-  display: block;
-  color: var(--color-error);
-  font-size: 0.85rem;
-  margin-top: var(--space-1);
-  min-height: 1.2em;
-}
-
-.obrigatorio {
-  color: var(--color-error);
-}
-
-/* Benefícios */
-.form-fidelidade__beneficios {
-  margin: var(--space-3) 0;
-  padding: var(--space-2);
-  background: var(--color-surface-2);
-  border-radius: var(--radius-md);
-}
-
-.form-fidelidade__beneficios h3 {
-  font-size: var(--fs-h3);
-  text-align: center;
-  margin-bottom: var(--space-2);
-  color: var(--color-text);
-}
-
-.beneficios-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--space-1);
-}
-
-.beneficio-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: var(--space-1);
-  border-radius: var(--radius-md);
-  text-align: center;
-  background: var(--color-bg);
-}
-
-.beneficio-card--bronze {
-  border: 2px solid #cd7f32;
-}
-
-.beneficio-card--prata {
-  border: 2px solid #c0c0c0;
-}
-
-.beneficio-card--ouro {
-  border: 2px solid #ffd700;
-}
-
-.beneficio-card__nivel {
-  font-weight: var(--fw-bold);
-  font-size: 0.9rem;
-}
-
-.beneficio-card__desconto {
-  font-size: 0.85rem;
-  color: var(--color-primary);
-}
-
-.beneficio-card__extra {
-  font-size: 0.75rem;
-  color: var(--color-text-muted);
-}
-
-.beneficio-card__req {
-  font-size: 0.7rem;
-  color: var(--color-text-muted);
-  margin-top: var(--space-1);
-}
-
-/* LGPD Checkboxes */
-.form-fidelidade__lgpd {
-  margin: var(--space-2) 0;
-}
-
-.checkbox-lgpd {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-1);
-  margin-bottom: var(--space-1);
-  cursor: pointer;
-}
-
-.checkbox-lgpd input {
-  width: 18px;
-  height: 18px;
-  margin-top: 2px;
-  accent-color: var(--color-primary);
-}
-
-.checkbox-lgpd__text {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  line-height: 1.4;
-}
-
-/* Botão Submit */
-.form-fidelidade__actions {
-  margin-top: var(--space-2);
-}
-
-.form-fidelidade__actions .btn {
-  width: 100%;
-}
-
-.form-fidelidade__actions .btn.is-loading {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-/* Resultado */
-.form-fidelidade__result {
-  margin-top: var(--space-2);
-  padding: var(--space-2);
-  border-radius: var(--radius-md);
-  text-align: center;
-}
-
-.form-fidelidade__result--success {
-  background: rgba(34, 197, 94, 0.1);
-  border: 1px solid rgba(34, 197, 94, 0.3);
-}
-
-.form-fidelidade__result--error {
-  background: rgba(239, 68, 68, 0.1);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-}
-
-.result-success h4,
-.result-error h4 {
-  margin-bottom: var(--space-1);
-}
-
-.result-nivel {
-  font-size: 1rem;
-  color: var(--color-primary);
-}
-
-.result-pedidos {
-  color: var(--color-text-muted);
-  margin-bottom: var(--space-2);
-}
-
-.btn-whatsapp {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-1);
-  background: #25d366;
-  color: #fff;
-  padding: var(--space-1) var(--space-2);
-  border-radius: var(--radius-md);
-  font-weight: var(--fw-semibold);
-  text-decoration: none;
-  margin-top: var(--space-1);
-}
-
-.btn-whatsapp:hover {
-  background: #128c7e;
-  text-decoration: none;
-}
-
-.result-icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: var(--space-1);
-}
-
-/* Responsivo */
-@media (max-width: 480px) {
-  .beneficios-grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-1);
-  }
-  
-  .beneficio-card {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: var(--space-1) var(--space-2);
-  }
-  
-  .beneficio-card__nivel {
-    font-size: 1rem;
-  }
-}
   pointer-events: auto;
 }
 
@@ -1377,40 +1000,49 @@ body.lgpd-banner-open .whatsapp-float {
   gap: var(--space-2);
 }
 
-.footer-heading {
-  font-size: var(--fs-small);
-  font-weight: var(--fw-semibold);
-  color: var(--color-text-muted);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: var(--space-2);
-}
-
+/* Item 7: ícones de redes sociais no footer — ícone à esquerda, alinhado verticalmente */
 .footer-social {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.footer-social li {
-  margin-bottom: var(--space-1);
-}
-
-.footer-social a {
+.footer-social__link {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
+  gap: 8px;
   color: var(--color-text-muted);
-  font-size: var(--fs-small);
+  font-size: 0.9rem;
+  font-weight: var(--fw-medium);
+  text-decoration: none;
   transition: color var(--duration) var(--ease);
+  min-height: var(--touch-min);
 }
 
-.footer-social a:hover {
-  color: var(--color-primary);
+.footer-social__link:hover {
+  color: var(--color-text);
+  text-decoration: none;
 }
 
-.footer-social svg {
+.footer-social__icon {
+  /* 18px conforme spec — WCAG: ícone decorativo aria-hidden já no HTML */
+  width: 18px;
+  height: 18px;
   flex-shrink: 0;
+  opacity: 0.75;
+  transition: opacity var(--duration) var(--ease);
+}
+
+.footer-social__link:hover .footer-social__icon {
+  opacity: 1;
+}
+
+/* Item 2: .cta-stripe removida do HTML — manter classe no CSS para não quebrar cache antigo */
+.cta-stripe {
+  display: none;
 }
 
 @media (min-width: 600px) {

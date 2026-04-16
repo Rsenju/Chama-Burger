@@ -15,7 +15,6 @@
  * servidor (backend/banco de dados), assinado com chave privada e associado ao usuário
  * autenticado. Use HSM ou KMS para gerenciamento de chaves.
  */
-
 (function (global) {
   "use strict";
 

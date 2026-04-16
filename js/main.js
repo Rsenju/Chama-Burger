@@ -1,3 +1,8 @@
+/**
+ * UI principal: navegação, CTAs, formulário, checkout, cozinha, sticky CTA, carrossel, WhatsApp.
+ * FIX [Médio Funcionalidade]: form desabilitado graciosamente se CHAMASecurity ausente.
+ * FIX [Baixo UX]: countdown persistente via sessionStorage para manter urgência real na sessão.
+ */
 (function () {
   "use strict";
 
@@ -371,23 +376,8 @@
   }
 
   function initCheckoutDemo() {
-    var card = document.getElementById("checkout-card-num");
-    if (card) {
-      card.addEventListener("input", function () {
-        var v = card.value.replace(/\D/g, "").slice(0, 16);
-        var parts = v.match(/.{1,4}/g) || [];
-        card.value = parts.join(" ");
-      });
-    }
-    var cpf = document.getElementById("checkout-boleto-cpf");
-    if (cpf) {
-      cpf.addEventListener("input", function () {
-        var v = cpf.value.replace(/\D/g, "").slice(0, 11);
-        if (v.length <= 11) {
-          cpf.value = v.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, "$1.$2.$3-$4");
-        }
-      });
-    }
+    /* Item 5: seção Pagamento (demonstração) removida do HTML.
+       Função mantida vazia para não quebrar a chamada em DOMContentLoaded. */
   }
 
   function bindCtaPedirAgora() {

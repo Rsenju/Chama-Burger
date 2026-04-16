@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56" role="img" aria-label="99Food">
+  <rect width="200" height="56" rx="10" fill="#F6A800"/>
+  <text x="100" y="40" text-anchor="middle" fill="#1a1a1a"
+        font-family="system-ui,'Helvetica Neue',Arial,sans-serif"
+        font-size="30" font-weight="900" letter-spacing="-1">99</text>
+</svg>

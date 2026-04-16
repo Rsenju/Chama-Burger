@@ -1,3 +1,7 @@
+/**
+ * Service Worker — cache de assets estáticos com fallback offline.
+ * FIX [Médio PWA]: adicionado offline.html e estratégia de fallback de rede.
+ */
 var CACHE_NAME = "chama-burger-v2026-1";
 var ASSETS = [
   "./",

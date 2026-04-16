@@ -1,3 +1,7 @@
+/**
+ * Validação, sanitização anti-XSS/SQLi, anti path traversal e rate limiting (mitigação client-side).
+ * FIX [Médio Segurança]: adicionado fallback local quando IP externo não está disponível.
+ */
 (function (global) {
   "use strict";
 

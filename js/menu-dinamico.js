@@ -1,11 +1,9 @@
 /**
  * Status aberto/fechado e badges de indisponibilidade (estoque simulado).
- * Ajuste SCHEDULE para o horário real do restaurante.
  */
 (function () {
   "use strict";
 
-  /** [dia 0=dom ... 6=sab] { open: "HH:mm", close: "HH:mm" } — null = fechado */
   var SCHEDULE = [
     { open: "12:00", close: "22:00" },
     { open: "11:00", close: "23:00" },
@@ -16,7 +14,6 @@
     { open: "11:00", close: "00:00" },
   ];
 
-  /** IDs de cards do cardápio que ficam indisponíveis (simulação) */
   var OUT_OF_STOCK_IDS = ["menu-chama-triplo"];
 
   function parseTime(str) {
@@ -37,6 +34,7 @@
     var open = parseTime(slot.open);
     var close = parseTime(slot.close);
     var n = nowMinutes();
+    /* Meia-noite: close=00:00 → parseTime=0, logo close < open → lógica de virada de dia */
     if (close < open) {
       return n >= open || n < close;
     }
@@ -60,13 +58,9 @@
     el.classList.toggle("status-badge--open", open);
     el.classList.toggle("status-badge--closed", !open);
     if (open) {
-      el.innerHTML =
-        '<span class="status-dot" aria-hidden="true"></span> Aberto agora — pedidos pelo site e WhatsApp';
+      el.innerHTML = '<span class="status-dot" aria-hidden="true"></span> Aberto agora — pedidos pelo site e WhatsApp';
     } else {
-      el.innerHTML =
-        '<span class="status-dot" aria-hidden="true"></span> Fechado no momento — abre às <strong>' +
-        nextOpenLabel() +
-        "</strong>";
+      el.innerHTML = '<span class="status-dot" aria-hidden="true"></span> Fechado no momento — abre às <strong>' + nextOpenLabel() + "</strong>";
     }
   }
 
